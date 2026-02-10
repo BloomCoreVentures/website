@@ -1,0 +1,305 @@
+.users {
+    padding: 130px 0 100px;
+    position: relative;
+
+    .section-title-wrap {
+        margin-bottom: 30px;
+    }
+
+    .users-rating {
+        margin-bottom: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .rating-wrap {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+
+            .leaf-left {
+                width: 35px;
+                height: 58px;
+            }
+
+            .leaf-right {
+                width: 35px;
+                height: 58px;
+            }
+
+            .rating-content {
+                text-align: center;
+
+                span {
+                    color: #2B2B2B;
+                    font-size: 31px;
+                    font-weight: 600;
+                    line-height: normal;
+                    margin-bottom: 6px;
+                }
+
+                p {
+                    font-size: 10px;
+                    color: #2B2B2B;
+                }
+            }
+        }
+    }
+
+    .users-wrapper {
+        width: 92%;
+        max-width: 1060px;
+        margin: 0 auto;
+
+        .users-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 23px;
+            align-items: start;
+
+            .users-item {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                &:nth-child(2) {
+                    margin-top: 80px;
+                }
+
+                .users-card {
+                    padding: 24px 28px;
+                    border-radius: 36px;
+                    min-height: 257px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+
+                    .avatar {
+                        position: relative;
+                        // margin-bottom: 60px;
+                        width: 70px;
+                        height: 70px;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            border-radius: 50%;
+                            object-fit: cover;
+                        }
+
+                        .user-name {
+                            position: absolute;
+                            background: white;
+                            color: #2B2B2B;
+                            border-radius: 100px;
+                            padding: 4px 8px;
+                            width: fit-content;
+                            font-size: 11px;
+                            font-weight: 500;
+                            left: 50%;
+                            bottom: -5px;
+                            transform: translateX(-50%);
+                        }
+                    }
+
+                    .user-text {
+                        color: #2B2B2B;
+                        line-height: normal;
+                        font-size: 18px;
+                    }
+                }
+
+                .card-purple {
+                    background: #EFD2FC;
+                }
+
+                .card-blue {
+                    background: #D9E3FF;
+                }
+
+                .card-yellow {
+                    background: #FCEDC3;
+                }
+
+                .card-green {
+                    background: #E3F4D3;
+                }
+
+                .card-beige {
+                    background: #FFE1E1;
+                }
+            }
+        }
+    }
+
+    .users-indicator {
+        display: none;
+    }
+}
+
+
+
+@media (max-width: 850px) {
+    .users {
+
+        .section-title-wrap {
+            margin-bottom: 24px;
+        }
+
+        .users-rating {
+            margin-bottom: 40px;
+
+            .rating-wrap {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+
+                .leaf-left {
+                    width: 30px;
+                    height: 50px;
+                }
+
+                .leaf-right {
+                    width: 30px;
+                    height: 50px;
+                }
+
+                .rating-content {
+                    text-align: center;
+
+                    span {
+                        font-size: 27px;
+                        margin-bottom: 5px;
+                    }
+
+                    p {
+                        font-size: 9px;
+                    }
+                }
+            }
+        }
+
+
+        .users-wrapper {
+            overflow-x: auto;
+
+            overflow-y: hidden;
+            -webkit-overflow-scrolling: touch;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            width: 100%;
+            padding: 0 16px;
+
+            .users-list {
+                display: flex;
+                gap: 17px;
+                width: max-content;
+                // padding: 0 16px;
+
+
+                .users-item {
+                    flex: 0 0 86vw;
+                    max-width: 360px;
+                    scroll-snap-align: center;
+
+                    &:nth-child(2) {
+                        margin-top: 0px;
+                    }
+
+                    .users-card {
+                        padding: 16px;
+                        border-radius: 28px;
+                        min-height: 180px;
+
+                        .user-text {
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .users-wrapper::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        .users-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .users-dot {
+            width: 20px;
+            height: 4px;
+            border-radius: 999px;
+            background: rgba(255, 120, 130, 0.15);
+            transition: width .25s ease, background-color .25s ease, opacity .25s ease;
+            opacity: .9;
+        }
+
+        .users-dot.is-active {
+            width: 60px;
+            background: #ff6b7a;
+            opacity: 1;
+        }
+    }
+}
+
+
+@media (max-width: 480px) {
+    .users {
+
+
+        .users-wrapper {
+
+            width: 80%;
+
+        }
+
+    }
+}
+
+
+@media (max-width: 450px) {
+    .users {
+
+
+        .users-wrapper {
+
+            width: 86%;
+
+        }
+
+    }
+}
+
+
+@media (max-width: 430px) {
+    .users {
+
+
+        .users-wrapper {
+
+            width: 91%;
+
+        }
+
+    }
+}
+
+@media (max-width: 400px) {
+    .users {
+
+
+        .users-wrapper {
+
+            width: 94%;
+
+        }
+
+    }
+}

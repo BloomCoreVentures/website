@@ -1,0 +1,323 @@
+.feature{
+    position: relative;
+    min-height: 100svh;
+    padding: 130px 0 0px;
+    overflow: hidden;
+    background: url(../images/dots.svg); // якщо треба
+    background-size: cover;
+    background-repeat: no-repeat;
+    --phone-hide: 490px;
+    // --phone-push: 70px;
+  }
+
+  .feature-inner {
+    position: relative;
+  }
+
+  .feature-inner::after {
+    content: "";
+    background: url(../images/feature-ellipse.svg);
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+  
+  .feature-scene{
+    position: relative;
+    min-height: 100svh;
+  }
+  
+  .feature .section-title-wrap{
+    position: relative;
+    z-index: 10;
+  }
+  
+  // .feature-stage{
+  //   position: absolute;
+  //   inset: 0;               // <- як у hero
+  //   pointer-events: none;
+  //   z-index: 1;
+  //   height: 620px;
+  //   width: min(1020px, 92vw);
+  //   margin: 0 auto;
+  //   top: 190px;
+  //   // background: url(../images/feature-ellipse.svg);
+  // }
+
+  .feature-stage{
+    position: absolute;
+    inset: 0;
+    width: min(1020px, 92vw);
+    margin: 0 auto;
+    pointer-events: none;
+    z-index: 1;
+  
+    height: 100%;
+    display: flex;
+    align-items: flex-end;   /* телефон до низу */
+    justify-content: center;
+    padding-top: 190px;      /* місце під заголовок */
+  }
+
+  .feature-layer{
+    position: relative;  /* <-- тепер всі absolute діти прив’язані сюди */
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* телефон: не ховай через bottom-calc, тільки transform */
+  // .feature-phone{
+  //   position: absolute;
+  //   left: 50%;
+  //   bottom: 0;
+  //   width: 635px;
+  //   // width: clamp(320px, 46vw, 690px);
+  //   // transform: translateX(-50%) translateY(var(--phone-hide)); // старт вниз
+  //   transform: translateX(-50%); /* ✅ тільки центрування */
+  //   // transform: translateX(-50%); // старт вниз
+
+  //   will-change: transform;
+  //   z-index: 3;
+  // }
+
+  .feature-phone{
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    max-width: 640px;
+    // width: min(635px, 86vw);
+    // max-height: calc(100svh - 230px); 
+    // max-height: calc(100svh - 230px); 
+    height: auto;
+  
+    transform: translateX(-50%);
+    z-index: 5;
+    object-fit: cover;
+  }
+  
+  
+  /* ГРУПИ */
+.feature-left,
+.feature-right{
+  position: absolute;
+//   left: 50%;
+//   bottom: clamp(220px, 22vh, 320px); // піднімаємо карточки над телефоном
+//   width: clamp(300px, 30vw, 430px);
+//   height: clamp(180px, 18vw, 240px);
+  z-index: 3;
+}
+
+/* ліву групу відносимо вліво від центру */
+.feature-left {
+    bottom: clamp(210px, 26vh, 340px);
+    width: 318px;
+    height: 200px;
+    left: clamp(12px, 6vw, 70px);
+    // left: 7%;
+    // top: 17%;
+}
+
+/* праву групу відносимо вправо від центру */
+.feature-right{
+//   transform: translateX(calc(-50% + clamp(260px, 28vw, 420px)));
+width: 270px;
+height: 260px;
+// top: 18%;
+// right: 3%;
+right: clamp(12px, 4vw, 50px);
+bottom: clamp(200px, 26vh, 340px);
+
+}
+
+/* ----- LEFT items ----- */
+/* 1) велика фотка зліва */
+.feature-left1{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 125px;
+    transform-origin: center;
+}
+
+/* 2) маленька “For you” біля центру (трохи нижче) */
+.feature-left2{
+    position: absolute;
+    left: 102px;
+    bottom: 0;
+    width: 150px;
+    bottom: -7px;
+}
+
+/* 3) тонка фіолетова полоска зверху */
+.feature-left3{
+    position: absolute;
+    right: 0;
+    top: 7px;
+    width: 122px;
+}
+
+/* ----- RIGHT items ----- */
+/* 1) велика фотка справа */
+.feature-right1{
+  position: absolute;
+//   right: 0;
+  top: 30px;
+  width: 140px;
+  left: 0;
+  transform: rotate(-6deg);
+//   width: clamp(200px, 20vw, 280px);
+//   transform: rotate(4deg);
+//   transform-origin: center;
+//   filter: drop-shadow(0 10px 24px rgba(0,0,0,.10));
+}
+
+/* 2) маленька “Belly growth” у правому верхньому куті */
+.feature-right2{
+  position: absolute;
+  right: 33px;
+  top: 0px;
+  width: 112px;
+  z-index: 2;
+//   transform: rotate(10deg);
+//   transform-origin: center;
+//   filter: drop-shadow(0 10px 24px rgba(0,0,0,.10));
+}
+
+/* 3) рожева кнопка/плашка внизу праворуч */
+.feature-right3{
+  position: absolute;
+  right: 0;
+  bottom: 0px;
+  width: 130px;
+//   transform: rotate(-2deg);
+//   transform-origin: center;
+//   filter: drop-shadow(0 10px 24px rgba(0,0,0,.10));
+}
+  
+
+@media only screen and (max-width: 930px) {
+
+  .feature-left1 {
+    width: 90px;
+  }
+
+  .feature-left2 {
+    position: absolute;
+    left: 77px;
+    bottom: 0;
+    width: 85px;
+    bottom: 5px;
+}
+
+.feature-left3 {
+  position: absolute;
+  right: 5px;
+  top: 7px;
+  width: 90px;
+}
+
+.feature-right1 {
+  top: 30px;
+  width: 85px;
+  left: 11px;
+  transform: rotate(-6deg);
+}
+
+.feature-right2 {
+  right: 23px;
+  top: 0px;
+  width: 68px;
+  z-index: 2;
+}
+
+.feature-right3 {
+  right: 10px;
+  bottom: 0px;
+  width: 70px;
+}
+
+// .feature-right3 {
+//   position: absolute;
+//   right: 23px;
+//   bottom: 75px;
+//   width: 105px;
+// }
+
+.feature-left {
+  bottom: clamp(310px, 26vh, 340px);
+  width: 230px;
+  height: 143px;
+  left: 10%;
+}
+
+.feature-right {
+  width: 164px;
+  height: 160px;
+  right: 10%;
+  bottom: clamp(300px, 26vh, 340px);
+}
+}
+
+
+@media only screen and (max-width: 767px) {
+
+  .feature { --phone-hide: 0px; }
+
+  .feature-phone {
+    max-width: 375px;
+  }
+
+  .feature-left {
+    bottom: clamp(320px, 26vh, 340px);
+        width: 230px;
+        height: 143px;
+        left: -60px;
+  }
+  
+  .feature-right {
+    width: 164px;
+        height: 160px;
+        bottom: clamp(300px, 26vh, 340px);
+        right: -36px;
+  }
+}
+
+// @media only screen and (max-width: 650px) {
+//   .feature-left {
+//     bottom: clamp(310px, 26vh, 340px);
+//     width: 230px;
+//     height: 143px;
+//     left: 0%;
+//   }
+  
+//   .feature-right {
+//     width: 164px;
+//     height: 160px;
+//     right: 0%;
+//     bottom: clamp(300px, 26vh, 340px);
+//   }
+// }
+
+
+
+// @media only screen and (max-width: 480px) {
+//   .feature-left {
+//     bottom: clamp(310px, 26vh, 340px);
+//     width: 230px;
+//     height: 143px;
+//     left: -12%;
+//   }
+  
+//   .feature-right {
+//     width: 164px;
+//     height: 160px;
+//     right: -12%;
+//     bottom: clamp(300px, 26vh, 340px);
+//   }
+// }
