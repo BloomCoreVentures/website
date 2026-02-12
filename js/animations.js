@@ -111,7 +111,7 @@ gsap.set(scene, { transformOrigin: "50% 30%", y: 0, scale: 1, opacity: 1 });
 gsap.set([wm, cloud, phone], { y: 0 });
 gsap.set(phoneImg, { transformOrigin: "50% 80%" });
 
-const tl = gsap.timeline({
+const heroTl = gsap.timeline({
     scrollTrigger: {
         trigger: hero,
         start: "top top",
@@ -122,17 +122,17 @@ const tl = gsap.timeline({
     }
 });
 
-tl.to(wm, { y: -60, ease: "none" }, 0);
-tl.fromTo(
+heroTl.to(wm, { y: -60, ease: "none" }, 0);
+heroTl.fromTo(
     cloud,
     { y: 100 },
     { y: -45, ease: "none" },
     0
 );
-tl.to(phone, { y: -85, ease: "none" }, 0);
-tl.to(phoneImg, { rotation: -6, ease: "none" }, 0);
+heroTl.to(phone, { y: -85, ease: "none" }, 0);
+heroTl.to(phoneImg, { rotation: -6, ease: "none" }, 0);
 
-tl.to(scene, {
+heroTl.to(scene, {
     y: -50,
     scale: 0.72,
     opacity: 0.10,
@@ -172,12 +172,19 @@ if (feature) {
             gsap.set(fRightGroup, { x: -120, y: 140, scale: 0.55, autoAlpha: 0.25, rotate: 6, filter: "blur(1px)", force3D: true });
         }
 
+        const END_DESKTOP = "+=265%";
+        const END_MOBILE = "+=200%";
+
         const tlF = gsap.timeline({
             scrollTrigger: {
                 trigger: feature,
                 start: "top top",
-                end: isMobile ? "+=105%" : "+=115%",
-                scrub: isMobile ? 1 : 1.8,
+                end: isMobile ? END_MOBILE : END_DESKTOP,
+                scrub: isMobile ? .8 : .8,
+                fastScrollEnd: isMobile ? false : true,
+                // fastScrollEnd: true,
+                // end: isMobile ? "+=105%" : "+=115%",
+                // scrub: isMobile ? 1 : 1.8,
                 pin: true,
                 anticipatePin: 1,
                 invalidateOnRefresh: true
@@ -198,8 +205,8 @@ if (feature) {
             tlF.to(fLeftGroup, { duration: 0.12, x: -156, y: -156, rotate: 1.6, ease: "sine.out" }, 0.66);
             tlF.to(fRightGroup, { duration: 0.12, x: 156, y: -156, rotate: -1.6, ease: "sine.out" }, 0.66);
 
-            tlF.to(fLeftGroup, { x: 60, y: -210, rotate: -3, scale: 0.78, autoAlpha: 0.95, ease: "power2.inOut" }, 0.70);
-            tlF.to(fRightGroup, { x: -60, y: -210, rotate: 3, scale: 0.78, autoAlpha: 0.95, ease: "power2.inOut" }, 0.70);
+            tlF.to(fLeftGroup, { x: 60, y: -210, rotate: -3, scale: 0.78, autoAlpha: 0.95, ease: "power2.inOut" }, 0.82);
+            tlF.to(fRightGroup, { x: -60, y: -210, rotate: 3, scale: 0.78, autoAlpha: 0.95, ease: "power2.inOut" }, 0.82);
 
             if (title) tlF.to(title, { y: -440, autoAlpha: 0.9, ease: "none" }, 0.52);
 
@@ -235,12 +242,20 @@ if (feature) {
         //     ease: "none"
         // }, 0.88);
 
+        // tlF.to(fInner, {
+        //     y: -40,
+        //     scale: 0.80,
+        //     autoAlpha: 0.02,
+        //     ease: "none"
+        // }, 0.98);
+
         tlF.to(fInner, {
-            y: -20,
-            scale: 0.9,
-            autoAlpha: 0.10,
+            y: isMobile ? -25 : -40,
+            scale: isMobile ? 0.75 : 0.80,
+            autoAlpha: isMobile ? 0.18 : 0.18,
+            duration: isMobile ? 0.28 : 0.8,
             ease: "none"
-        }, 0.98);
+        }, isMobile ? 0.80 : 0.98);
 
         return () => { };
     });
@@ -385,9 +400,9 @@ if (!wrap || !pin || !scenes.length || !indicator || !indCurrent || !indTotal ||
     // gsap.set(pin, { transformOrigin: "50% 30%" });
     gsap.set(inner, { transformOrigin: "50% 30%" });
 
-    const tl = gsap.timeline({ defaults: { ease: "none" } });
+    const scenesTl = gsap.timeline({ defaults: { ease: "none" } });
 
-    if (holdStart > 0) tl.to({}, { duration: holdStart });
+    if (holdStart > 0) scenesTl.to({}, { duration: holdStart });
 
 
     for (let i = 0; i < total - 1; i++) {
@@ -401,14 +416,14 @@ if (!wrap || !pin || !scenes.length || !indicator || !indCurrent || !indTotal ||
 
         const at = i + holdStart;
 
-        tl.to(a, {
+        scenesTl.to(a, {
             duration: outPart,
             autoAlpha: 0,
             scale: isFirst ? 0.985 : 0.965,
             y: isFirst ? -10 : -14
         }, at);
 
-        tl.fromTo(b,
+        scenesTl.fromTo(b,
             { autoAlpha: 0, scale: isFirst ? 1.05 : 1.07, y: isFirst ? 16 : 22 },
             { duration: inPart, autoAlpha: 1, scale: 1, y: 0 },
             at + (outPart * 0.35)
@@ -416,7 +431,7 @@ if (!wrap || !pin || !scenes.length || !indicator || !indCurrent || !indTotal ||
 
         const decorEls = decorByScene[i + 1];
         if (decorEls && decorEls.length) {
-            tl.fromTo(
+            scenesTl.fromTo(
                 decorEls,
                 { autoAlpha: 0, scale: 0.96, y: 14, rotate: -1 },
                 { duration: 0.45, autoAlpha: 1, scale: 1, y: 0, rotate: 0, stagger: 0.06 },
@@ -424,7 +439,7 @@ if (!wrap || !pin || !scenes.length || !indicator || !indCurrent || !indTotal ||
             );
         }
 
-        tl.to(b, {
+        scenesTl.to(b, {
             duration: setPart,
             autoAlpha: 1,
             scale: 1,
@@ -432,12 +447,12 @@ if (!wrap || !pin || !scenes.length || !indicator || !indCurrent || !indTotal ||
         }, at + outPart + inPart - 0.02);
     }
 
-    if (holdEnd > 0) tl.to({}, { duration: holdEnd });
+    if (holdEnd > 0) scenesTl.to({}, { duration: holdEnd });
 
-    tl.to(inner, {
+    scenesTl.to(inner, {
         duration: 0.55,
-        y: -40,
-        scale: 0.9,
+        y: -140,
+        scale: 0.85,
         autoAlpha: 0.12,
         ease: "power1.out"
     });
@@ -446,13 +461,13 @@ if (!wrap || !pin || !scenes.length || !indicator || !indCurrent || !indTotal ||
     const st = ScrollTrigger.create({
         trigger: wrap,
         start: "top top",
-        end: () => "+=" + (window.innerHeight * stepVH * tl.duration()),
+        end: () => "+=" + (window.innerHeight * stepVH * scenesTl.duration()),
         pin: pin,
         scrub: 1,
         anticipatePin: 1,
         fastScrollEnd: true,
         invalidateOnRefresh: true,
-        animation: tl,
+        animation: scenesTl,
         onUpdate: (self) => updateIndicatorByTime(self.animation.time(), self.animation.duration()),
         onRefresh: (self) => updateIndicatorByTime(self.animation.time(), self.animation.duration())
     });
@@ -510,15 +525,15 @@ if (!wrap || !pin || !scenes.length || !indicator || !indCurrent || !indTotal ||
 
 
 gsap.fromTo(".users-wrapper",
-    { y: 120, autoAlpha: 0.15 },
+    { y: 120, autoAlpha: 0.1 },
     {
         y: 0,
         autoAlpha: 1,
         ease: "none",
         scrollTrigger: {
             trigger: ".users",
-            start: "top top",
-            end: "+=120",
+            start: "top 80%",
+            end: "top 35%",
             scrub: 0.5,
             invalidateOnRefresh: true,
         },

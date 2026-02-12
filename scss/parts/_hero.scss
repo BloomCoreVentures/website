@@ -1,11 +1,10 @@
 .hero {
-    background: linear-gradient(180deg, #FFF1F1 0%, #FFFFFF 100%);
     // min-height: calc(100vh - $headerHeigh);
     min-height: 100svh;
-    padding-top: 135px;
     overflow: hidden;
     position: relative;
     z-index: 2;
+    background: #FAFAFC;
 
     /* контрольні змінні (desktop дефолт) */
     --phone-w: 250px;
@@ -24,6 +23,8 @@
         will-change: transform, opacity;
         overflow: hidden;
         position: relative;
+        background: linear-gradient(180deg, #FFF1F1 0%, #FFFFFF 100%);
+        padding-top: 135px;
 
         .hero-content {
             position: relative;

@@ -1,7 +1,6 @@
 .feature{
     position: relative;
     min-height: 100svh;
-    padding: 130px 0 0px;
     overflow: hidden;
     background: url(../images/dots.svg); // якщо треба
     background-size: cover;
@@ -12,6 +11,8 @@
 
   .feature-inner {
     position: relative;
+    padding: 130px 0 0px;
+
   }
 
   .feature-inner::after {
@@ -26,6 +27,8 @@
     bottom: 0;
     background-size: cover;
     background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: top;
   }
   
   .feature-scene{

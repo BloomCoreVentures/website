@@ -169,12 +169,11 @@ body.is-loading {
   }
 }
 .hero {
-  background: linear-gradient(180deg, #FFF1F1 0%, #FFFFFF 100%);
   min-height: 100svh;
-  padding-top: 135px;
   overflow: hidden;
   position: relative;
   z-index: 2;
+  background: #FAFAFC;
   /* контрольні змінні (desktop дефолт) */
   --phone-w: 250px;
   --phone-left: 52%;
@@ -190,6 +189,8 @@ body.is-loading {
   will-change: transform, opacity;
   overflow: hidden;
   position: relative;
+  background: linear-gradient(180deg, #FFF1F1 0%, #FFFFFF 100%);
+  padding-top: 135px;
 }
 .hero .hero-scene .hero-content {
   position: relative;
@@ -288,8 +289,8 @@ body.is-loading {
 }
 .how-it-works {
   position: relative;
-  margin-top: -130px;
-  padding-top: 130px;
+  margin-top: -125px;
+  padding-top: 65px;
   z-index: 2;
   padding-bottom: 50px;
   background: #FAFAFC;
@@ -319,7 +320,6 @@ body.is-loading {
 .feature {
   position: relative;
   min-height: 100svh;
-  padding: 130px 0 0px;
   overflow: hidden;
   background: url(../images/dots.svg);
   background-size: cover;
@@ -329,6 +329,7 @@ body.is-loading {
 
 .feature-inner {
   position: relative;
+  padding: 130px 0 0px;
 }
 
 .feature-inner::after {
@@ -343,6 +344,8 @@ body.is-loading {
   bottom: 0;
   background-size: cover;
   background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: top;
 }
 
 .feature-scene {
@@ -678,11 +681,12 @@ body.is-loading {
 }
 .scenes {
   position: relative;
+  margin-top: -150px;
 }
 
 .scenes-pin {
   position: relative;
-  height: 100svh;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -885,9 +889,10 @@ body.is-loading {
 .scene {
   position: absolute;
   inset: 0;
-  min-height: 100vh;
+  height: 100%;
+  min-height: 100%;
   padding-top: 115px;
-  padding-bottom: 20px;
+  padding-bottom: 0px;
   opacity: 0;
   pointer-events: none;
 }
@@ -1682,7 +1687,8 @@ body.is-loading {
   }
 }
 .users {
-  padding: 130px 0 100px;
+  padding: 10px 0;
+  margin-top: -100px;
   position: relative;
 }
 .users .section-title-wrap {
@@ -1959,7 +1965,7 @@ body.is-loading {
   border-radius: 30px;
   overflow: hidden;
   background: #eaeaea;
-  aspect-ratio: 1/1.75;
+  aspect-ratio: 1/1.55;
 }
 
 .review-video {

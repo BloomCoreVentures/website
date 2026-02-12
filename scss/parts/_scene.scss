@@ -1,5 +1,5 @@
-.scenes { position: relative; }
-.scenes-pin { position: relative; height: 100svh; overflow: hidden; }
+.scenes { position: relative; margin-top: -150px; }
+.scenes-pin { position: relative; height: 100vh; overflow: hidden; }
 .scenes-inner{ position: relative; height: 100%; }
 :root{
     /* індикатор */
@@ -218,10 +218,12 @@
 
     position: absolute;
     inset: 0;
-    min-height: 100vh;
+    height: 100%;
+    min-height: 100%;
+    // min-height: 100vh;
     // padding-top: clamp(64px, 8vh, 115px);
     padding-top: 115px;
-    padding-bottom: 20px;
+    padding-bottom: 0px;
     opacity: 0; pointer-events: none;
 }
 
